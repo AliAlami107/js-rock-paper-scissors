@@ -9,6 +9,9 @@
                 - 3 = scissors
         * User needs to type it's choice
         * compute the results
+            - rock wins against scissors but losses against paper
+            - paper wins against rock but losses against scissors
+            - Scissors wins against paper but losses against rock
         * return who the winner is
     
     - things to consider -
@@ -46,11 +49,64 @@ function getComputerChoice()
     }
 }
 
+function getHumanChoice()
+{
+    let answer = prompt("Rock, Paper or Scissors?");
+    return answer;
+}
+
+let humanScore = 0;
+let computerScore = 0;
+
+/*
+- rock wins against scissors but losses against paper
+- paper wins against rock but losses against scissors
+- Scissors wins against paper but losses against rock
+*/
+
+function playRound(humanChoice, computerChoice)
+{
+    let human = humanChoice.toLowerCase();
+    let computer = computerChoice.toLowerCase();
+    let winner;
+
+    /*  Logic for human wins*/ 
+    if (humanChoice == "rock" && computerChoice == "scissors")
+    {
+        winner = "Human";
+    }
+    else if (humanChoice == "paper" && computerChoice == "rock")
+    {
+        winner = "Human";
+    }
+    else if (humanChoice == "scissors" && computerChoice == "paper")
+    {
+        winner = "Human";
+    } else {
+        return "error occured in Human logic";
+    }
+    
+    /*  Logic for computer wins*/
+    if (humanChoice == "rock" && computerChoice == "paper")
+    {
+        winner = "Computer";
+    }
+    else if (humanChoice == "paper" && computerChoice == "scissors")
+    {
+        winner = "Computer";
+    }
+    else if (humanChoice == "scissors" && computerChoice == "Rock")
+    {
+        winner = "Computer";
+    } else {
+        return "error occured in Computer logic";
+    }
+
+}
 
 
+console.log(playRound('Rock','Paper'));
+/*console.log(getHumanChoice());*/
+/*console.log(getComputerChoice());*/
 
-
-
-
-console.log(getComputerChoice());
 
