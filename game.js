@@ -55,9 +55,6 @@ function getHumanChoice()
     return answer;
 }
 
-let humanScore = 0;
-let computerScore = 0;
-
 /*
 - rock wins against scissors but losses against paper
 - paper wins against rock but losses against scissors
@@ -68,45 +65,43 @@ function playRound(humanChoice, computerChoice)
 {
     let human = humanChoice.toLowerCase();
     let computer = computerChoice.toLowerCase();
-    let winner;
-
-    /*  Logic for human wins*/ 
-    if (humanChoice == "rock" && computerChoice == "scissors")
-    {
-        winner = "Human";
-    }
-    else if (humanChoice == "paper" && computerChoice == "rock")
-    {
-        winner = "Human";
-    }
-    else if (humanChoice == "scissors" && computerChoice == "paper")
-    {
-        winner = "Human";
-    } else {
-        return "error occured in Human logic";
-    }
     
-    /*  Logic for computer wins*/
-    if (humanChoice == "rock" && computerChoice == "paper")
+    if (human === computer)
     {
-        winner = "Computer";
-    }
-    else if (humanChoice == "paper" && computerChoice == "scissors")
-    {
-        winner = "Computer";
-    }
-    else if (humanChoice == "scissors" && computerChoice == "Rock")
-    {
-        winner = "Computer";
-    } else {
-        return "error occured in Computer logic";
-    }
+        console.log("it's a draw!!");
+    } 
+    else if (
+        (human === "rock" && computer === "scissors") ||
+        (human === "paper" && computer === "rock") ||
+        (human === "scissors" && computer === "paper")
+    ) {
+        console.log('You win ' + human + " beats " + computer + ".");
+        humanScore++;
+        console.log(`The score is human: ${humanScore} and computer: ${computerScore}`);
+        return humanScore;
+    } 
+    else {
 
+        console.log('You lose ' + computer + " beats " + human + ".");
+        computerScore++;
+        console.log(`The score is human: ${humanScore} and computer: ${computerScore}`);
+        return computerScore;
+    }
 }
 
+function playGame()
+{
+    let i = 1;
+    while (i <= 5)
+    {
+        const humanSelection = getHumanChoice();
+        const computerSelection = getComputerChoice();
+        playRound(humanSelection, computerSelection);
+        i++;
+    }
+}
 
-console.log(playRound('Rock','Paper'));
-/*console.log(getHumanChoice());*/
-/*console.log(getComputerChoice());*/
+let humanScore = 0;
+let computerScore = 0;
 
-
+playGame();
