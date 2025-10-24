@@ -30,16 +30,27 @@ function computeInt(min, max)
 
 function getComputerChoice() 
 {
-
-    return computeInt(1, 3);    
+    let hand = computeInt(1, 3);
+    let rock = 1;
+    let paper = 2;
+    let scissors = 3;
     
+    if (hand == rock) {
+        return "Rock";
+    } else if ( hand == paper) {
+        return "Paper";
+    } else if (hand == scissors) {
+        return "scissors";
+    } else {
+        return "opps it shouldn't do this";
+    }
 }
 
+
+
+
+
+
+
 console.log(getComputerChoice());
-
-
-
-
-
-
 
