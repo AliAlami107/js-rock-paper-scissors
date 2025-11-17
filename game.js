@@ -68,31 +68,26 @@ function playRound(humanChoice, computerChoice)
     
     if (human === computer)
     {
-        console.log("it's a draw!!");
+        displayMessage(`it's a draw!! Score — You: ${humanScore}, Computer: ${computerScore}`);
     } 
     else if (
         (human === "rock" && computer === "scissors") ||
         (human === "paper" && computer === "rock") ||
         (human === "scissors" && computer === "paper")
     ) {
-        console.log('You win ' + human + " beats " + computer + ".");
         humanScore++;
-        console.log(`The score is human: ${humanScore} and computer: ${computerScore}`);
+        displayMessage(`You win! ${human} beats ${computer}.  
+            Score — You: ${humanScore}, Computer: ${computerScore}`)
         return humanScore;
     } 
     else {
-
-        console.log('You lose ' + computer + " beats " + human + ".");
         computerScore++;
-        console.log(`The score is human: ${humanScore} and computer: ${computerScore}`);
+        displayMessage(`You lose! ${computer} beats ${human}.  
+            Score — You: ${humanScore}, Computer: ${computerScore}`);
         return computerScore;
     }
 }
 
-function playGame()
-{
-    
-}
 
 let humanScore = 0;
 let computerScore = 0;
@@ -112,3 +107,9 @@ paper.addEventListener("click", () => {
 scissors.addEventListener("click", () => {
     playRound("scissors")
 });
+
+function displayMessage(message){
+    const resultDiv = document.getElementById("results");
+    resultDiv.textContent = message;
+}
+
