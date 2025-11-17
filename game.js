@@ -39,9 +39,9 @@ function getComputerChoice()
     let scissors = 3;
     
     if (hand == rock) {
-        return "Rock";
+        return "rock";
     } else if ( hand == paper) {
-        return "Paper";
+        return "paper";
     } else if (hand == scissors) {
         return "scissors";
     } else {
@@ -63,8 +63,8 @@ function getHumanChoice()
 
 function playRound(humanChoice, computerChoice)
 {
-    let human = humanChoice.toLowerCase();
-    let computer = computerChoice.toLowerCase();
+    let human = humanChoice;
+    let computer = getComputerChoice();
     
     if (human === computer)
     {
@@ -91,17 +91,24 @@ function playRound(humanChoice, computerChoice)
 
 function playGame()
 {
-    let i = 1;
-    while (i <= 5)
-    {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-        i++;
-    }
+    
 }
 
 let humanScore = 0;
 let computerScore = 0;
 
-playGame();
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+
+rock.addEventListener("click", () => {
+    playRound("rock")
+});
+
+paper.addEventListener("click", () => {
+    playRound("paper")
+});
+
+scissors.addEventListener("click", () => {
+    playRound("scissors")
+});
