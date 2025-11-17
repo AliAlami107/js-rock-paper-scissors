@@ -65,6 +65,15 @@ function playRound(humanChoice, computerChoice)
 {
     let human = humanChoice;
     let computer = getComputerChoice();
+
+    if(humanScore === 5){
+        console.log("The Human has won the hunger games!!!");
+
+    }
+    if(computerScore === 5){
+        console.log("The Robots has won the game!!!");
+    }
+
     
     if (human === computer)
     {
