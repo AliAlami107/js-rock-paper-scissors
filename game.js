@@ -61,41 +61,53 @@ function getHumanChoice()
 - Scissors wins against paper but losses against rock
 */
 
-function playRound(humanChoice, computerChoice)
-{
+function playRound(humanChoice) {
     let human = humanChoice;
     let computer = getComputerChoice();
+    let result = ""; // what the function will return
 
-    if(humanScore === 5){
-        console.log("The Human has won the hunger games!!!");
-
-    }
-    if(computerScore === 5){
-        console.log("The Robots has won the game!!!");
-    }
-
-    
-    if (human === computer)
-    {
-        displayMessage(`it's a draw!! Score — You: ${humanScore}, Computer: ${computerScore}`);
+    // DRAW
+    if (human === computer) {
+        displayMessage(`It's a draw! Score — You: ${humanScore}, Computer: ${computerScore}`);
+        result = "draw";
     } 
+    
+    // HUMAN WINS
     else if (
         (human === "rock" && computer === "scissors") ||
         (human === "paper" && computer === "rock") ||
         (human === "scissors" && computer === "paper")
     ) {
         humanScore++;
-        displayMessage(`You win! ${human} beats ${computer}.  
-            Score — You: ${humanScore}, Computer: ${computerScore}`)
-        return humanScore;
+        displayMessage(`You win! ${human} beats ${computer}.
+Score — You: ${humanScore}, Computer: ${computerScore}`);
+        result = "human";
     } 
+    
+    // COMPUTER WINS
     else {
         computerScore++;
-        displayMessage(`You lose! ${computer} beats ${human}.  
-            Score — You: ${humanScore}, Computer: ${computerScore}`);
-        return computerScore;
+        displayMessage(`You lose! ${computer} beats ${human}.
+Score — You: ${humanScore}, Computer: ${computerScore}`);
+        result = "computer";
     }
+
+    // CHECK WINNER AFTER SCORES ARE UPDATED
+    if (humanScore >= 5) {
+        displayMessage(`🎉 The Human has won the hunger games!!!
+Final score — You: ${humanScore}, Computer: ${computerScore}`);
+        return "human wins";
+    }
+
+    if (computerScore >= 5) {
+        displayMessage(`🤖 The Robots have won the game!!!
+Final score — You: ${humanScore}, Computer: ${computerScore}`);
+        return "computer wins";
+    }
+
+    return result; // return the round result
 }
+
 
 
 let humanScore = 0;
